@@ -19,7 +19,11 @@ export class ChatHandlerService {
 
   private messages: Message[] = [];
   private users: string[] = [];
-  private me: string = '';
+  private _me: string = '';
+
+  get me() {
+    return this._me;
+  }
 
   public connect(name: string) {
     this.me = name;
