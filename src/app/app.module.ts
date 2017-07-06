@@ -15,6 +15,7 @@ import {ConnectedGuard} from "./connected.guard";
 import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
+import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MessageInterceptorComponent} from "./message-interceptor/message-interce
     DisconnectedViewComponent,
     MessageInterceptorComponent,
     PluginTestComponent,
-    MessageViewComponent
+    MessageViewComponent,
+    PluginPrivateComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

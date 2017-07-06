@@ -49,7 +49,7 @@ export class ChatViewComponent implements OnInit {
       const current = this.messagesDiv.nativeElement.scrollTop;
       const isScolledDown: boolean = max == current;
       if (isScolledDown) {
-        this.afterChange(ChangeDetectionMethod.WaitForDetection, () => this.messagesDiv.nativeElement.scrollTop = this.messagesDiv.nativeElement.scrollHeight);
+        this.afterChange(ChangeDetectionMethod.SimpleDelay, () => this.messagesDiv.nativeElement.scrollTop = this.messagesDiv.nativeElement.scrollHeight);
       }
     });
   }
@@ -88,7 +88,7 @@ export class ChatViewComponent implements OnInit {
         this.zone.onMicrotaskEmpty.first().subscribe(() => methodToDelay());
         break;
       case ChangeDetectionMethod.SimpleDelay:
-        setTimeout(() => methodToDelay(), 0);
+        setTimeout(() => methodToDelay(), 20);
         break;
       case ChangeDetectionMethod.None:
         methodToDelay();
