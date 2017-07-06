@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {ChatHandlerService} from '../chat-handler.service'
 import {Router} from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './disconnected-view.component.html',
@@ -10,24 +11,24 @@ import {Router} from "@angular/router";
 export class DisconnectedViewComponent implements OnInit {
 
   private name: string = '';
+  private sub: any;
 
   constructor(private chatService: ChatHandlerService,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.chatService.connected().subscribe(connected => {
-      if (connected) {
-        this.router.navigate(['/chat']);
-      }
-    })
+    this.sub = this.route.params.subscribe(params => {
+       this.name = params['pseudo'];
+    });
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
-  private connect() {
-    if (!this.name) {
-      return;
-    }
-    this.chatService.connect(this.name);
+  get redirectPath() {
+      return '/login/' + (this.name ? this.name : '');
   }
 
 }

@@ -4,6 +4,7 @@ import {Message} from '../message'
 import {ChatHandlerService} from '../chat-handler.service'
 import {ChatCommunicationService} from '../chat-communication.service'
 import {Router} from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,8 +18,12 @@ export class ChatViewComponent implements OnInit {
               private chatService: ChatHandlerService,
               private cdRef: ChangeDetectorRef,
               private zone: NgZone,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
   }
+  
+  private name: string = '';
+  private sub: any;
 
   @ViewChild('textInput')
   private textInput: ElementRef;
@@ -39,7 +44,7 @@ export class ChatViewComponent implements OnInit {
   ngOnInit() {
     this.chatService.connected().subscribe(value => {
       if (!value) {
-        this.router.navigate(['/disconnected']);
+        this.router.navigate(['/disconnected', this.name]);
       } else {
         this.afterChange(ChangeDetectionMethod.WaitForDetection, () => this.focusMessageField());
       }
@@ -52,6 +57,12 @@ export class ChatViewComponent implements OnInit {
         this.afterChange(ChangeDetectionMethod.SimpleDelay, () => this.messagesDiv.nativeElement.scrollTop = this.messagesDiv.nativeElement.scrollHeight);
       }
     });
+    this.sub = this.route.params.subscribe(params => {
+       this.name = params['pseudo'];
+    });
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   send() {
