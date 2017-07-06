@@ -25,6 +25,10 @@ export class ChatHandlerService {
     return this._me;
   }
 
+  set me(me: string) {
+    this._me = me;
+  }
+
   public connect(name: string) {
     this.me = name;
     this.chatCommunication.connect(name);
