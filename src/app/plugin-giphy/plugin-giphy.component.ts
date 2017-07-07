@@ -50,7 +50,7 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
         this.showFavorites(author);
         break;
       default:
-        this.userMessage = 'Essayez /gif random, /gif trending, ou /gif search <text>';
+        this.userMessage = 'Essayez /gif random, /gif trending, /gif search ou /gif favs <text>';
         break;
     }
     this.intercept();
@@ -70,7 +70,6 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
       this.gifs = [];
   }
   private showTrending() {
-    //noinspection TypeScriptValidateTypes
     this.giphyService.getTrending().subscribe(gifs=>this.gifs = gifs);
   }
 
