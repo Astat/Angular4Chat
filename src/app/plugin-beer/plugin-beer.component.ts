@@ -27,8 +27,7 @@ export class PluginBeerComponent extends PluginTemplateComponent {
 
     if(value){
       this.searchMotif = value;
-      this.beerService.findBeers(value)
-      .subscribe(beers=> this.beers=beers);
+      this.beerService.findBeers(value).subscribe(beers=> this.beers=beers);
 
     } else {
       this.beerService.getRandomBeer().subscribe(beer=> this.beers=[beer]);
