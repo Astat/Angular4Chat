@@ -43,11 +43,14 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
             this.searchGifs(arg);
           }
         break;
+      case 'trending':
+        this.showTrending();
+        break;
       case 'favs':
         this.showFavorites(author);
         break;
       default:
-        this.userMessage = 'Essayez /gif random ou /gif search <text>';
+        this.userMessage = 'Essayez /gif random, /gif trending, ou /gif search <text>';
         break;
     }
     this.intercept();
@@ -65,6 +68,10 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
   private resetView() {
       this.userMessage = '';
       this.gifs = [];
+  }
+  private showTrending() {
+    //noinspection TypeScriptValidateTypes
+    this.giphyService.getTrending().subscribe(gifs=>this.gifs = gifs);
   }
 
   private saveInFavorites(gif : Gif){

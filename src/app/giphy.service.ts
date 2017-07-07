@@ -26,6 +26,12 @@ export class GiphyService {
         .map(this.extractSingleGif).catch(this.handleError);
 
   }
+  getTrending(): Observable<Gif[]>{
+    //noinspection TypeScriptValidateTypes
+    return  this.http.get(`${this.URL}/trending?api_key=${API_KEY}&limit=${this.SEARCH_LIMIT}`)
+      .map(this.extractMultipleGifs).catch(this.handleError);
+
+  }
 
   search(searchTerm :string): Observable<Gif[]>{
     //noinspection TypeScriptValidateTypes
