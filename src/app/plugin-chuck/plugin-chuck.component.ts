@@ -81,7 +81,7 @@ export class PluginChuckComponent extends PluginTemplateComponent {
   }
 
   private help() {
-    this.info = 'Utilisation ....';
+    this.info = 'Utilisation .... ';
   }
 
   private callCategories() {
