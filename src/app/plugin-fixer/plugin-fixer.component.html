@@ -12,13 +12,19 @@
 
   
   <input type="text" (keyup)="update()" (click)="update()" [(ngModel)]="uinput" placeholder="uinput">
- {{base}} to 
+  
+  <select [(ngModel)]="base" (click)="update()">
+    <option *ngFor="let x of symbols" [value]="x" >{{x}}</option>
+  </select> 
+ 
+   = {{write}}
+
 
   <select [(ngModel)]="symbol" (click)="update()">
     <option *ngFor="let x of symbols" [value]="x" >{{x}}</option>
   </select>
 
-   = {{write}}
+  <button (click)="reverse()">=</button>
  
 </div>
 

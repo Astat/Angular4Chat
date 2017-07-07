@@ -14,7 +14,7 @@ import {PluginTemplateComponent} from '../plugin-template/plugin-template.compon
 export class PluginFixerComponent extends PluginTemplateComponent  {
 
   private base: string = "EUR";
-  private symbol: string = "USD";
+  private symbol: string = "CHF";
   private rate : string  = "x.xx";
   private write: string = "Try '/fixer list' or '/fixer ui' ";
   private symbols : string[];
@@ -36,12 +36,12 @@ export class PluginFixerComponent extends PluginTemplateComponent  {
       this.list();
 
     } else if(value == "ui") {
-      this.list();
       this.isUi = true;
+      this.list();
+      this.update();
     } else if(value) {
-      let symbol = value;
-      this.symbol = symbol;
-      this.latest(symbol);
+      this.symbol = value;
+      this.latest(value);
     }
 
     this.intercept();
@@ -55,7 +55,7 @@ export class PluginFixerComponent extends PluginTemplateComponent  {
      this.http.get("http://api.fixer.io/latest").
        subscribe(response => {
          let json: Fixer = response.json();
-         this.symbols = []
+         this.symbols = ['EUR']
          for(let key in json.rates) {
             this.symbols.push(key);
          }
@@ -72,9 +72,17 @@ export class PluginFixerComponent extends PluginTemplateComponent  {
        });
    
   }
+
+  reverse() {
+    let hold = this.base;
+    this.base = this.symbol;
+    this.symbol = hold;
+
+    this.update();
+  }
  
   latest(symbol : string) {
-     this.http.get("http://api.fixer.io/latest").
+     this.http.get(`http://api.fixer.io/latest?base=${this.base}`).
        subscribe(response => {
          let json: Fixer = response.json();
          let date = json.date;
@@ -82,11 +90,15 @@ export class PluginFixerComponent extends PluginTemplateComponent  {
          this.rate = json.rates[symbol];
 
          let value = +this.rate * this.uinput;
+         if(symbol == this.base) {
+            value = +this.uinput;
+         }
+         let svalue = value.toFixed(3);
 
          if(this.isUi) {
-this.write = `${value}`;
+          this.write = svalue;
          } else {
-          this.write = `Latest rate (${date}): ${symbol}/${this.base} = ${this.rate}  => ${value}`;
+          this.write = `Latest rate (${date}): ${symbol}/${this.base} = ${this.rate}  => ${svalue}`;
          }
 
        });

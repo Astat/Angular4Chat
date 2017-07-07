@@ -14,6 +14,5 @@ export const routes: Routes = [
   {path: 'chat', component: ChatViewComponent, canActivate: [ConnectedGuard]},
   {path: 'chat/:pseudo', component: ChatViewComponent, canActivate: [ConnectedGuard]},
   {path: 'disconnected', component: DisconnectedViewComponent},
-  {path: 'disconnected/:pseudo', component: DisconnectedViewComponent},
-  {path: 'fixer', component: PluginFixerComponent}
-];
+  {path: 'disconnected/:pseudo', component: DisconnectedViewComponent}
+  ];
