@@ -47,7 +47,12 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
         this.showTrending();
         break;
       case 'favs':
-        this.showFavorites(author);
+          if(this.chatService.me == author){
+            this.showFavorites(author);
+          }else{
+            this.discardMessage();
+            return;
+          }
         break;
       default:
         this.userMessage = 'Essayez /gif random, /gif trending, /gif search ou /gif favs <text>';
@@ -89,10 +94,9 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
   }
 
   private deleteFromFavorites(gif :Gif){
-    const me = this.chatService.me;
-    this.giphyService.deleteFavorite(me, gif).subscribe(() =>  {
+    this.giphyService.deleteFavorite(this.chatService.me, gif).subscribe(() =>  {
       this.userMessage = 'OK !';
-      this.showFavorites(me);
+      this.showFavorites(this.chatService.me);
     });
   }
 }
