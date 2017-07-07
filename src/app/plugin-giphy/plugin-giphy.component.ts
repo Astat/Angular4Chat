@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {PluginTemplateComponent} from "../plugin-template/plugin-template.component";
 import {GiphyService} from "../giphy.service";
 import {Gif} from "./Gif";
+import {ChatHandlerService} from "../chat-handler.service";
 
 @Component({
   selector: 'plugin-giphy',
@@ -12,8 +13,9 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
 
   private userMessage: string;
   private gifs: Gif[];
+  private favMode : boolean = false;
 
-  constructor(private giphyService: GiphyService) {
+  constructor(private giphyService: GiphyService, private chatService : ChatHandlerService) {
     super();
   }
   process(command:string, value:string, author:string):void {
@@ -28,6 +30,8 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
     let cmd:string = valueParams ? valueParams[0] : '';
     let arg:string = valueParams && valueParams.length > 1 ? valueParams[1] : '';
 
+    this.favMode = false;
+
     switch (cmd) {
       case 'random':
       this.showRandomGif();
@@ -38,6 +42,9 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
           }else{
             this.searchGifs(arg);
           }
+        break;
+      case 'favs':
+        this.showFavorites(author);
         break;
       default:
         this.userMessage = 'Essayez /gif random ou /gif search <text>';
@@ -58,5 +65,23 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
   private resetView() {
       this.userMessage = '';
       this.gifs = [];
+  }
+
+  private saveInFavorites(gif : Gif){
+    this.giphyService.saveFavorite(this.chatService.me, gif);
+    this.userMessage = 'saved !';
+  }
+
+  private showFavorites(author : string) {
+    this.favMode = true;
+    this.giphyService.getFavorites(author).subscribe((favs) =>  this.gifs = favs);
+  }
+
+  private deleteFromFavorites(gif :Gif){
+    const me = this.chatService.me;
+    this.giphyService.deleteFavorite(me, gif).subscribe(() =>  {
+      this.userMessage = 'OK !';
+      this.showFavorites(me);
+    });
   }
 }

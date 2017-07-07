@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+
 import { Http, Response } from '@angular/http';
 import {Gif} from "./plugin-giphy/Gif";
 
@@ -31,6 +32,42 @@ export class GiphyService {
     return  this.http.get(`${this.URL}/search?api_key=${API_KEY}&q=${searchTerm}&limit=${this.SEARCH_LIMIT}`)
         .map(this.extractMultipleGifs).catch(this.handleError);
 
+  }
+
+  saveFavorite(user :string, gif : Gif){
+    this.getFavorites(user).subscribe((favs) => {
+      favs.push(gif);
+      localStorage.setItem(user, JSON.stringify(favs))
+    });
+  }
+
+  getFavorites(user :string) : Observable<Gif[]> {
+    return Observable.create(observer => {
+      let favs = localStorage.getItem(user);
+      if (!favs){
+        observer.next([]);
+      }else{
+        observer.next(JSON.parse(favs));
+      }
+      observer.complete();
+    });
+  }
+
+  deleteFavorite(user :string, gif : Gif) : Observable<Gif[]> {
+    return Observable.create(observer => {
+      this.getFavorites(user).subscribe((favs) => {
+        //noinspection TypeScriptValidateTypes
+        let index = favs.findIndex(g => g.url == gif.url);
+        debugger
+        console.log(favs.length);
+        favs = favs.splice(index, 1);
+        console.log(favs.length);
+        localStorage.setItem(user, JSON.stringify(favs));
+
+        observer.next(gif);
+        observer.complete();
+      });
+    });
   }
 
   private extractSingleGif(res: Response) : Gif {
