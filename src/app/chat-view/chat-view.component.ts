@@ -5,10 +5,6 @@ import {ChatHandlerService} from '../chat-handler.service'
 import {ChatCommunicationService} from '../chat-communication.service'
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
-import {ChucknorrisService} from "../chucknorris.service";
-import {Observable} from "rxjs/Observable";
-import {ChuckMessage} from "../chuck-message";
-
 
 @Component({
   selector: 'app-chat-view',
@@ -18,7 +14,6 @@ import {ChuckMessage} from "../chuck-message";
 export class ChatViewComponent implements OnInit {
 
   constructor(private chatCommunication: ChatCommunicationService,
-              private chuckNorrisService: ChucknorrisService,
               private chatService: ChatHandlerService,
               private cdRef: ChangeDetectorRef,
               private zone: NgZone,
@@ -58,7 +53,7 @@ export class ChatViewComponent implements OnInit {
       const current = this.messagesDiv.nativeElement.scrollTop;
       const isScolledDown: boolean = max == current;
       if (isScolledDown) {
-        this.afterChange(ChangeDetectionMethod.SimpleDelay, () => this.messagesDiv.nativeElement.scrollTop = this.messagesDiv.nativeElement.scrollHeight);
+        this.afterChange(ChangeDetectionMethod.WaitForDetection, () => this.messagesDiv.nativeElement.scrollTop = this.messagesDiv.nativeElement.scrollHeight);
       }
     });
     this.sub = this.route.params.subscribe(params => {
@@ -68,11 +63,6 @@ export class ChatViewComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-  }
-
-  sendChuck() {
-    let obj: Observable<ChuckMessage> = this.chuckNorrisService.sendRandom();
-    obj.subscribe(m => {console.log(m)});
   }
 
   send() {
