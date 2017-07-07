@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -19,8 +21,10 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
 import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
 import {ChucknorrisService} from "./chucknorris.service";
 import {HttpModule} from "@angular/http";
-
-
+import {GiphyService} from "./giphy.service";
+import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
+import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
+import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import {HttpModule} from "@angular/http";
     MessageViewComponent,
     PluginPrivateComponent,
     PluginChuckComponent
+    PluginGiphyComponent,
+    PluginSunriseComponent,
+    PluginFixerComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -45,7 +52,8 @@ import {HttpModule} from "@angular/http";
     ChatHandlerService,
     ChatCommunicationService,
     ChucknorrisService,
-    ConnectedGuard
+    ConnectedGuard,
+    GiphyService
   ],
   bootstrap: [AppComponent]
 })
