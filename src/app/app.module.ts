@@ -18,9 +18,11 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import { PluginBeerComponent } from './plugin-beer/plugin-beer.component';
+import { BeerService } from './plugin-beer/beer.service';
+import {HttpModule} from '@angular/http';
 import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
 import {ChucknorrisService} from "./chucknorris.service";
-import {HttpModule} from "@angular/http";
 import {GiphyService} from "./giphy.service";
 import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
 import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
@@ -37,7 +39,8 @@ import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component"
     PluginTestComponent,
     MessageViewComponent,
     PluginPrivateComponent,
-    PluginChuckComponent
+    PluginBeerComponent,
+    PluginChuckComponent,
     PluginGiphyComponent,
     PluginSunriseComponent,
     PluginFixerComponent
@@ -45,12 +48,14 @@ import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component"
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [
     ChatHandlerService,
     ChatCommunicationService,
+    ConnectedGuard,
+    BeerService,
     ChucknorrisService,
     ConnectedGuard,
     GiphyService
