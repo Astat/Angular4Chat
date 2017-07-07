@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -30,6 +32,17 @@ import { ShowActorsComponent } from './tv-shows/show-actors/show-actors.componen
 import { ShowHelpComponent } from './tv-shows/show-help/show-help.component';
 import { ShowEpisodesComponent } from './tv-shows/show-episodes/show-episodes.component';
 import { ShowEpisodeDisplayerComponent } from './tv-shows/show-episode-displayer/show-episode-displayer.component';
+import {PluginMathComponent} from "./plugin-math/plugin-math.component";
+import {MathService} from "./math.service";
+import { HttpModule } from '@angular/http';
+import { PluginBeerComponent } from './plugin-beer/plugin-beer.component';
+import { BeerService } from './plugin-beer/beer.service';
+import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
+import {ChucknorrisService} from "./chucknorris.service";
+import {GiphyService} from "./giphy.service";
+import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
+import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
+import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +66,13 @@ import { ShowEpisodeDisplayerComponent } from './tv-shows/show-episode-displayer
     ShowActorsComponent,
     ShowHelpComponent,
     ShowEpisodesComponent,
-    ShowEpisodeDisplayerComponent
+    ShowEpisodeDisplayerComponent,
+    PluginMathComponent,
+    PluginBeerComponent,
+    PluginChuckComponent,
+    PluginGiphyComponent,
+    PluginSunriseComponent,
+    PluginFixerComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -65,7 +84,12 @@ import { ShowEpisodeDisplayerComponent } from './tv-shows/show-episode-displayer
     ChatHandlerService,
     ChatCommunicationService,
     TvShowsService,
-    ConnectedGuard
+    ConnectedGuard,
+    MathService,
+    BeerService,
+    ChucknorrisService,
+    ConnectedGuard,
+    GiphyService
   ],
   bootstrap: [AppComponent]
 })
