@@ -18,6 +18,8 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import {GiphyService} from "./giphy.service";
+import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
 import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
 import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
 import {HttpModule} from "@angular/http";
@@ -33,6 +35,7 @@ import {HttpModule} from "@angular/http";
     PluginTestComponent,
     MessageViewComponent,
     PluginPrivateComponent,
+    PluginGiphyComponent,
     PluginSunriseComponent,
     PluginFixerComponent
   ],
@@ -45,7 +48,8 @@ import {HttpModule} from "@angular/http";
   providers: [
     ChatHandlerService,
     ChatCommunicationService,
-    ConnectedGuard
+    ConnectedGuard,
+    GiphyService
   ],
   bootstrap: [AppComponent]
 })
