@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -18,6 +20,8 @@ import {MessageInterceptorComponent} from "./message-interceptor/message-interce
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
 import {GiphyService} from "./giphy.service";
 import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
+import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
+import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
 import {HttpModule} from "@angular/http";
 
 @NgModule({
@@ -31,7 +35,9 @@ import {HttpModule} from "@angular/http";
     PluginTestComponent,
     MessageViewComponent,
     PluginPrivateComponent,
-    PluginGiphyComponent
+    PluginGiphyComponent,
+    PluginSunriseComponent,
+    PluginFixerComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
