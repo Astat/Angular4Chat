@@ -15,32 +15,6 @@ export class PluginSunriseComponent extends PluginTemplateComponent {
     super()
   }
 
-
-  searchCoord(city: string) {
-
-    console.log(city);
-    const endpoint = 'https://maps.googleapis.com/maps/api/geocode/json';
-    const searchParams = new URLSearchParams();
-    searchParams.set('address', city + '+CH');
-    searchParams.set('key', 'AIzaSyDfgAlAH8nRsT85v8m9ggNms2tOn7rf4Ow');
-
-    let url = endpoint + '?address=' + city + '+CH&key=AIzaSyDfgAlAH8nRsT85v8m9ggNms2tOn7rf4Ow';
-
-    return this.http
-      .get(url)
-      .map(res => res.json());
-  }
-
-
-  searchSunset(lat, lng) {
-    const endpoint = 'https://api.sunrise-sunset.org/json?lat=' + lat + '&lng=' + lng + '&date=today';
-    const searchParams = new URLSearchParams()
-
-    return this.http
-      .get(endpoint)
-      .map(res => res.json());
-  }
-
   private loading: boolean = true;
   private sunrise: string;
   private sunset: string;
@@ -67,9 +41,28 @@ export class PluginSunriseComponent extends PluginTemplateComponent {
   }
 
   share(value){
-    console.log(value);
     this.chat.send("/sun-share "+value);
+  }
 
+  private searchCoord(city: string) {
+    const endpoint = 'https://maps.googleapis.com/maps/api/geocode/json';
+    const searchParams = new URLSearchParams();
+    searchParams.set('address', city + '+CH');
+    searchParams.set('key', 'AIzaSyDfgAlAH8nRsT85v8m9ggNms2tOn7rf4Ow');
+    let url = endpoint + '?address=' + city + '+CH&key=AIzaSyDfgAlAH8nRsT85v8m9ggNms2tOn7rf4Ow';
+    return this.http
+      .get(url)
+      .map(res => res.json());
+  }
+
+
+  private searchSunset(lat, lng) {
+    const endpoint = 'https://api.sunrise-sunset.org/json?lat=' + lat + '&lng=' + lng + '&date=today';
+    const searchParams = new URLSearchParams()
+
+    return this.http
+      .get(endpoint)
+      .map(res => res.json());
   }
 
   private formatMessage(value){
@@ -96,14 +89,9 @@ export class PluginSunriseComponent extends PluginTemplateComponent {
     });
   }
 
-
-
   private setUTCTime(adate, arrayrise){
-
     adate.setUTCMinutes(parseInt(arrayrise[1]));
     adate.setUTCSeconds(parseInt(arrayrise[2].substring(0, 2)));
-
-    console.log(arrayrise[2].substring(3,5));
     if (arrayrise[2].substring(3,5) == 'PM'){
       adate.setUTCHours(parseInt(arrayrise[0])+12);
     } else {
