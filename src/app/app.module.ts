@@ -21,7 +21,6 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
 import { PluginTvShowsComponent } from './plugin-tv-shows/plugin-tv-shows.component';
 import { ShowSearchComponent } from './tv-shows/show-search/show-search.component';
 import {TvShowsService} from "./tv-shows.service";
-import {HttpModule} from "@angular/http";
 import { ShowPeopleComponent } from './tv-shows/show-people/show-people.component';
 import { ShowDisplayerComponent } from './tv-shows/show-displayer/show-displayer.component';
 import { ShowSeasonsComponent } from './tv-shows/show-seasons/show-seasons.component';
@@ -34,7 +33,6 @@ import { ShowEpisodesComponent } from './tv-shows/show-episodes/show-episodes.co
 import { ShowEpisodeDisplayerComponent } from './tv-shows/show-episode-displayer/show-episode-displayer.component';
 import {PluginMathComponent} from "./plugin-math/plugin-math.component";
 import {MathService} from "./math.service";
-import { HttpModule } from '@angular/http';
 import { PluginBeerComponent } from './plugin-beer/plugin-beer.component';
 import { BeerService } from './plugin-beer/beer.service';
 import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
