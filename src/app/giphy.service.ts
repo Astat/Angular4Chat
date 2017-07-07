@@ -64,10 +64,7 @@ export class GiphyService {
       this.getFavorites(user).subscribe((favs) => {
         //noinspection TypeScriptValidateTypes
         let index = favs.findIndex(g => g.url == gif.url);
-        debugger
-        console.log(favs.length);
-        favs = favs.splice(index, 1);
-        console.log(favs.length);
+        favs.splice(index, 1);
         localStorage.setItem(user, JSON.stringify(favs));
 
         observer.next(gif);

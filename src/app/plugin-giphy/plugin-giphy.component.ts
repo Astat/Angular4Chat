@@ -81,7 +81,12 @@ export class PluginGiphyComponent extends PluginTemplateComponent{
 
   private showFavorites(author : string) {
     this.favMode = true;
-    this.giphyService.getFavorites(author).subscribe((favs) =>  this.gifs = favs);
+    this.giphyService.getFavorites(author).subscribe((favs) =>  {
+      this.gifs = favs;
+      if(this.gifs.length == 0){
+        this.userMessage = 'Pas encore de favoris ? essaye "/gif trending"'
+      }
+    });
   }
 
   private deleteFromFavorites(gif :Gif){
