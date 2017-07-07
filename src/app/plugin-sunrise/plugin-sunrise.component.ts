@@ -43,6 +43,8 @@ export class PluginSunriseComponent extends PluginTemplateComponent {
 
 
   private write: string;
+  private sunrise: string;
+  private sunset: string;
 
   process(command: string, value: string, author: string) {
     if (command != "sun") {
@@ -57,15 +59,32 @@ export class PluginSunriseComponent extends PluginTemplateComponent {
         let lat = coord.results[0].geometry.location.lat;
         let lng = coord.results[0].geometry.location.lng;
         this.searchSunset(lat, lng).subscribe(result => {
-          console.log(result);
-          this.write = result.results.sunrise + " " + result.results.sunset;
+          this.sunrise = result.results.sunrise ;
+          this.sunset = result.results.sunset ;
+          
+          let sunriseDate = new Date ();
+          var arrayrise = this.sunrise.split(':');
+
+          let sunsetDate = new Date ();
+          var arrayset = this.sunset.split(':');
+          
+          this.setUTCTime(sunriseDate, arrayrise);
+          this.setUTCTime(sunsetDate, arrayset);
+          
+          this.sunrise = sunriseDate.toLocaleTimeString();
+          this.sunset = sunsetDate.toLocaleTimeString();
         });
         this.intercept();
       });
 
     }
-
-
   }
+
+  setUTCTime(adate, arrayrise){
+     adate.setUTCHours(parseInt(arrayrise[0]));
+     adate.setUTCMinutes(parseInt(arrayrise[1]));
+     adate.setUTCSeconds(parseInt(arrayrise[2].slice(0, 2)));
+   }
+ 
 
 }
