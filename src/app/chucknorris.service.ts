@@ -40,7 +40,6 @@ export class ChucknorrisService {
     return this.httpService
       .get(this.url + 'categories')
       .map(m => {
-        console.log(m);
         let array: string[] = m.json();
         return array;
       });

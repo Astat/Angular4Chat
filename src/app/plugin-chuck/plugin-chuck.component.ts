@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import {PluginTemplateComponent} from "../plugin-template/plugin-template.component";
-import {ChucknorrisService} from "../chucknorris.service";
-import {ChatHandlerService} from "../chat-handler.service";
-import {debug} from "util";
+import {Component, EventEmitter, Output} from '@angular/core';
+import {PluginTemplateComponent} from '../plugin-template/plugin-template.component';
+import {ChucknorrisService} from '../chucknorris.service';
+import {ChatHandlerService} from '../chat-handler.service';
+import {debug} from 'util';
 
 @Component({
   selector: 'plugin-chuck',
@@ -21,10 +21,10 @@ export class PluginChuckComponent extends PluginTemplateComponent {
   private categories: string[];
 
   process(command: string, value: string, author: string) {
-    if (command != "chuck") {
+    if (command != 'chuck') {
       return;
     }
-    let spaces: number = value.indexOf(" ");
+    let spaces: number = value.indexOf(' ');
     let sub: string = (spaces != -1) ? value.slice(0, spaces) : value;
     let att: string = (spaces != -1) ? value.slice(spaces + 1) : null;
 
@@ -75,7 +75,7 @@ export class PluginChuckComponent extends PluginTemplateComponent {
         this.write = m.value;
         this.icon = m.icon_url;
       } else {
-        this.info = "Pas de résultat, pour l'aide entrez 'help'";
+        this.info = 'Pas de résultat, pour l\'aide entrez \'help\'';
       }
     });
   }
@@ -90,4 +90,5 @@ export class PluginChuckComponent extends PluginTemplateComponent {
     });
 
   }
+
 }

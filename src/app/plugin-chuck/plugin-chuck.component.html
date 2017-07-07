@@ -1,4 +1,4 @@
 <div class="ext-box" *ngIf="icon"><img [src]="icon" class="int-box"><div class="int-box"><p>{{write}}</p></div></div>
-<div *ngIf="categories"><div *ngFor="let category of categories">{{category}}</div></div>
+<div *ngIf="categories"><h5>Liste des catégories : </h5><span *ngFor="let category of categories; let last = last"><td>{{category}}</td><td *ngIf="!last">,&nbsp;</td></span><br></div>
 <div *ngIf="info">{{info}}</div>
 
