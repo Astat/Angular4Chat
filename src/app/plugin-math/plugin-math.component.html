@@ -1,0 +1,23 @@
+<div>  
+  <a href="https://github.com/aunyks/newton-api#view-available-endpoints" target="new" title="Aide des commandes ('factor' est l'opération par défaut)">
+    <img src="/assets/math.jpg" style="width: 32px; height:32px;"/></a>
+
+
+  <span class="help" [hidden]="!help">
+    <b>Math plugin 1.0</b><br/>
+    Exemples:
+    <ul>
+      <li>"1+1"</li>
+      <li>"cos(pi)"</li>
+      <li>"derive x^2+2x"</li>
+      <li>"simplify 2^2 + 2(2)"</li>
+    </ul>
+    <a href="https://github.com/aunyks/newton-api#view-available-endpoints" target="new">Voir plus d'aide sur newton-api</a>
+  </span> 
+  <span [hidden]="!ok"><span class='query'>{{query}} =</span> {{response}}</span> 
+  <span [hidden]="!error" class='error'>L'expression {{query}} a provoqué une erreur: {{error}}</span>
+  <span [hidden]="!about" class='about'>Plugin 'math' créé par C.Dutoit le 7.7.17. sources: <a href='http://github/dutoitc'>Github</a><br/>
+    Si vous aimez ce plugin, merci de faire un don -> <a href="http://www.paypal.com">paypal</a> ;-)
+  </span>
+
+</div>

@@ -1,0 +1,33 @@
+div {
+    background: lightblue;
+    padding: 5px;
+    font-family: monospace;
+    font-size: 20px;
+    vertical-align: top;
+}
+
+div.help {
+    color:green;
+    font-size: 16px;
+    font-family: arial;
+}
+
+div.img {
+    padding-right: 5px;
+}
+
+span.query {
+    color: grey;
+}
+
+span.error {
+    color: red;
+    font-size: 16px;
+    font-family: arial;
+}
+
+span.about {
+    color:green;
+    font-size: 16px;
+    font-family: arial;
+}
