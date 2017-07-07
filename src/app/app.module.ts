@@ -17,6 +17,8 @@ import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
 import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
+import {HttpModule} from "@angular/http";
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component"
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [
     ChatHandlerService,
