@@ -9,5 +9,6 @@
     <input #textInput type="text" (keyup.enter)="send()" [(ngModel)]="text" placeholder="Message">
     <button type="button" (click)="send()">Send</button>
   </div>
+
 </div>
 <users-list [users]="users" (onSelectUser)="writeToChat($event)"></users-list>

@@ -22,7 +22,7 @@ export class PluginSunriseComponent extends PluginTemplateComponent {
   private displayShare: boolean = true;
 
   process(command: string, value: string, author: string) {
-    if (command != "sun" && command != "sun-share" && value != '') {
+    if ((command != "sun" && command != "sun-share") || value != '') {
       return;
     }
     if (command == 'sun-share'){
