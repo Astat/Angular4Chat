@@ -1,2 +1,4 @@
-<div class="ext-box"><img [src]="icon" class="int-box"><div class="int-box"><p>{{write}}</p></div></div>
+<div class="ext-box" *ngIf="icon"><img [src]="icon" class="int-box"><div class="int-box"><p>{{write}}</p></div></div>
+<div *ngIf="categories"><div *ngFor="let category of categories">{{category}}</div></div>
+<div *ngIf="info">{{info}}</div>
 
