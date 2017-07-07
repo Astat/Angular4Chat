@@ -4,6 +4,8 @@ import {ChatViewComponent} from './chat-view/chat-view.component'
 import {LoginViewComponent} from "./login-view/login-view.component";
 import {DisconnectedViewComponent} from "./disconnected-view/disconnected-view.component";
 import {ConnectedGuard} from "./connected.guard";
+import {PluginFixerComponent} from "./plugin-fixer/plugin-fixer.component";
+
 
 export const routes: Routes = [
   {path: 'login', component: LoginViewComponent},
@@ -12,5 +14,6 @@ export const routes: Routes = [
   {path: 'chat', component: ChatViewComponent, canActivate: [ConnectedGuard]},
   {path: 'chat/:pseudo', component: ChatViewComponent, canActivate: [ConnectedGuard]},
   {path: 'disconnected', component: DisconnectedViewComponent},
-  {path: 'disconnected/:pseudo', component: DisconnectedViewComponent}
+  {path: 'disconnected/:pseudo', component: DisconnectedViewComponent},
+  {path: 'fixer', component: PluginFixerComponent}
 ];

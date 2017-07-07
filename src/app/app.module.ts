@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -16,6 +18,7 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +30,14 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
     MessageInterceptorComponent,
     PluginTestComponent,
     MessageViewComponent,
-    PluginPrivateComponent
+    PluginPrivateComponent,
+    PluginFixerComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [
     ChatHandlerService,
