@@ -6,7 +6,6 @@ import {ChatCommunicationService} from '../chat-communication.service'
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-chat-view',
   templateUrl: './chat-view.component.html',
@@ -21,7 +20,7 @@ export class ChatViewComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) {
   }
-  
+
   private name: string = '';
   private sub: any;
 
@@ -54,13 +53,14 @@ export class ChatViewComponent implements OnInit {
       const current = this.messagesDiv.nativeElement.scrollTop;
       const isScolledDown: boolean = max == current;
       if (isScolledDown) {
-        this.afterChange(ChangeDetectionMethod.SimpleDelay, () => this.messagesDiv.nativeElement.scrollTop = this.messagesDiv.nativeElement.scrollHeight);
+        this.afterChange(ChangeDetectionMethod.WaitForDetection, () => this.messagesDiv.nativeElement.scrollTop = this.messagesDiv.nativeElement.scrollHeight);
       }
     });
     this.sub = this.route.params.subscribe(params => {
        this.name = params['pseudo'];
     });
   }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

@@ -1,0 +1,30 @@
+<h2>Sunrise and sunset information</h2>
+<p class="loading" *ngIf="loading">
+  <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i> Loading...
+</p>
+<div *ngIf="!loading">
+  <div class="map">
+    <i class="fa fa-map-marker fa-2x"></i> {{city}}
+  </div>
+  <div class="info">
+    <span>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-sun-o fa-stack-2x sun"></i>
+        <i class="fa fa-arrow-up fa-stack-1x sunrise"></i>
+      </span>
+      <span class="time">{{sunrise}}</span>
+    </span>
+    <span>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-sun-o fa-stack-2x sun"></i>
+        <i class="fa fa-arrow-down fa-stack-1x sunset"></i>
+      </span>
+      <span class="time">{{sunset}}</span>
+    </span>
+  </div>
+  <div class="share">
+    <a *ngIf="displayShare" (click)="share(city)">
+      <i class="fa fa-share-square"></i> Share on the chat ;)
+    </a>
+  </div>
+</div>

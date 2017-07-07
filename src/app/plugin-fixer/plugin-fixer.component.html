@@ -1,0 +1,31 @@
+
+<div class="fixer" >
+<div *ngIf="!isUi" >
+
+<p> 
+  {{write}}
+</p>
+</div>
+
+<div *ngIf="isUi" >
+
+
+  
+  <input type="text" (keyup)="update()" (click)="update()" [(ngModel)]="uinput" placeholder="uinput">
+  
+  <select [(ngModel)]="base" (click)="update()">
+    <option *ngFor="let x of symbols" [value]="x" >{{x}}</option>
+  </select> 
+ 
+   = {{write}}
+
+
+  <select [(ngModel)]="symbol" (click)="update()">
+    <option *ngFor="let x of symbols" [value]="x" >{{x}}</option>
+  </select>
+
+  <button (click)="reverse()">=</button>
+ 
+</div>
+
+</div>
