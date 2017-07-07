@@ -58,10 +58,11 @@ export class PluginFixerComponent extends PluginTemplateComponent  {
      this.http.get("http://api.fixer.io/latest").
        subscribe(response => {
          let json: Fixer = response.json();
+         let date = json.date;
          this.base  = json.base ;
          this.rate = json.rates[symbol];
 
-         this.write = `Latest rate: ${symbol}/${this.base} : ${this.rate}`;
+         this.write = `Latest rate (${date}): ${symbol}/${this.base} = ${this.rate} `;
 
        });
    
