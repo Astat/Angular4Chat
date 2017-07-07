@@ -16,6 +16,9 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import {GiphyService} from "./giphy.service";
+import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -27,17 +30,20 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
     MessageInterceptorComponent,
     PluginTestComponent,
     MessageViewComponent,
-    PluginPrivateComponent
+    PluginPrivateComponent,
+    PluginGiphyComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [
     ChatHandlerService,
     ChatCommunicationService,
-    ConnectedGuard
+    ConnectedGuard,
+    GiphyService
   ],
   bootstrap: [AppComponent]
 })
