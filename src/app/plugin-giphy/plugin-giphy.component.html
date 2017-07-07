@@ -1,0 +1,10 @@
+
+  <div *ngIf="userMessage" class="alert alert-info">{{userMessage}}</div>
+
+
+  <div *ngFor="let gif of gifs" class="gif-wrapper">
+    <img [src]="gif.url" />
+    <a (click)="saveInFavorites(gif)" *ngIf="!favMode">[save]</a>
+    <a (click)="deleteFromFavorites(gif)" *ngIf="favMode" >[x]</a>
+  </div>
+

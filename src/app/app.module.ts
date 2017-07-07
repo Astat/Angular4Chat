@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -19,7 +21,14 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
 import {PluginMathComponent} from "./plugin-math/plugin-math.component";
 import {MathService} from "./math.service";
 import { HttpModule } from '@angular/http';
-
+import { PluginBeerComponent } from './plugin-beer/plugin-beer.component';
+import { BeerService } from './plugin-beer/beer.service';
+import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
+import {ChucknorrisService} from "./chucknorris.service";
+import {GiphyService} from "./giphy.service";
+import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
+import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
+import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +41,12 @@ import { HttpModule } from '@angular/http';
     PluginTestComponent,
     MessageViewComponent,
     PluginPrivateComponent,
-    PluginMathComponent
+    PluginMathComponent,
+    PluginBeerComponent,
+    PluginChuckComponent,
+    PluginGiphyComponent,
+    PluginSunriseComponent,
+    PluginFixerComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -44,7 +58,11 @@ import { HttpModule } from '@angular/http';
     ChatHandlerService,
     ChatCommunicationService,
     ConnectedGuard,
-    MathService
+    MathService,
+    BeerService,
+    ChucknorrisService,
+    ConnectedGuard,
+    GiphyService
   ],
   bootstrap: [AppComponent]
 })
