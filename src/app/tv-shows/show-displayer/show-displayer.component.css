@@ -1,0 +1,11 @@
+
+.kind ul {
+  margin: 0;
+}
+
+.kind ul li {
+  display: inline;
+  padding: 2px;
+  margin: 0;
+  width: 19%;
+}

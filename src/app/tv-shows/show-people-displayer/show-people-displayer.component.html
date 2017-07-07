@@ -1,0 +1,15 @@
+<div class="show card">
+  <div class="left-container">
+    <app-image-displayer [src]="people.person.image?.medium" [alt]="people.person.name"></app-image-displayer>
+  </div>
+
+  <div class="right-container">
+    <h3>{{people.person.name}}</h3>
+
+    <div *ngIf="displayCharacter">
+      Jouant le role de : <h5>{{people.character?.name}}</h5>
+    </div>
+  </div>
+
+  <div class="clear-both"></div>
+</div>

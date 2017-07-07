@@ -1,0 +1,45 @@
+<div class="show card">
+  <div class="left-container">
+    <div class="main-picture">
+      <app-image-displayer [src]="show.show.image?.medium" [alt]="show.show.name"></app-image-displayer>
+    </div>
+  </div>
+  <div class="right-container">
+
+    <div class="header">
+        <h3>{{show.show.name}}</h3>
+
+
+
+    </div>
+
+    <div class="infos">
+      <div class="rating">
+        Note : {{show.show.rating?.average}}
+      </div>
+
+      <div class="kind">
+        Genre :
+        <ul>
+          <li *ngFor="let kind of show.show.genres">{{kind}}</li>
+        </ul>
+      </div>
+
+      <div class="language">
+        Langue : {{show.show.language}}
+      </div>
+
+    </div>
+
+    <div class="summary" [innerHTML]="show.show.summary">
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="getSeasons(show.show)" >Voir les saisons</button>
+      <button type="button" (click)="getActors(show.show)" >Voir les acteurs</button>
+    </div>
+  </div>
+
+  <div class="clear-both"></div>
+
+</div>

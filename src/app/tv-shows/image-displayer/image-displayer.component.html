@@ -1,0 +1,4 @@
+<img *ngIf="src; else noPicture" [src]="src" alt="{{alt}}"/>
+<ng-template #noPicture>
+  <img src="assets/noimagefound.jpg" width="210px"/>
+</ng-template>

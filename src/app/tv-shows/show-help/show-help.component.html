@@ -1,0 +1,11 @@
+<h3 class="head-title">Aide du plugin TV SHOWS</h3>
+
+<div *ngFor="let c of commands" class="card">
+  <span>Commande : <b>{{c.command}}</b></span>
+
+  <ul>
+    <li>Déscription : <b>{{c.description}}</b></li>
+    <li>Comment utiliser ? : <b>{{c.howto}}</b></li>
+    <li>Example : <b>{{c.example}}</b></li>
+  </ul>
+</div>
