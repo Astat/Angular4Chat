@@ -16,6 +16,7 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
     MessageInterceptorComponent,
     PluginTestComponent,
     MessageViewComponent,
-    PluginPrivateComponent
+    PluginPrivateComponent,
+    PluginSunriseComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
