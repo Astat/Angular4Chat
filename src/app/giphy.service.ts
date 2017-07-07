@@ -29,25 +29,21 @@ export class GiphyService {
   search(searchTerm :string): Observable<Gif[]>{
     //noinspection TypeScriptValidateTypes
     return  this.http.get(`${this.URL}/search?api_key=${API_KEY}&q=${searchTerm}&limit=${this.SEARCH_LIMIT}`)
-        .map(this.extractMutlipleGifs).catch(this.handleError);
+        .map(this.extractMultipleGifs).catch(this.handleError);
 
   }
 
-  private extractSingleGif(res: Response) {
+  private extractSingleGif(res: Response) : Gif {
     let body = res.json();
     return new Gif(body.data.fixed_height_small_url);
   }
 
 
-  private extractMutlipleGifs(res: Response) {
-    let gifInfos:any[] = res.json().data;
+  private extractMultipleGifs(res: Response) : Gif[] {
     let gifs:Gif[] = [];
-
-    for(let gifInfo of gifInfos){
-
+    for(let gifInfo of res.json().data){
       gifs.push(new Gif(gifInfo.images.fixed_height_small.url));
     }
-
     return gifs;
   }
 
