@@ -20,7 +20,6 @@ import {MessageInterceptorComponent} from "./message-interceptor/message-interce
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
 import { PluginBeerComponent } from './plugin-beer/plugin-beer.component';
 import { BeerService } from './plugin-beer/beer.service';
-import {HttpModule} from '@angular/http';
 import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
 import {ChucknorrisService} from "./chucknorris.service";
 import {GiphyService} from "./giphy.service";
