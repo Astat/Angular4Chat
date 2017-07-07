@@ -11,7 +11,10 @@ const API_KEY:string = 'a1a08d1173b0436486faba223f4cc08a';
 
 @Injectable()
 export class GiphyService {
-  private URL:string = 'http://api.giphy.com/v1/gifs/'
+
+  private URL:string = 'http://api.giphy.com/v1/gifs';
+  private SEARCH_LIMIT: number = 5;
+
   constructor(private http : Http){
 
   }
@@ -19,13 +22,33 @@ export class GiphyService {
   getRandom(): Observable<Gif>{
     //noinspection TypeScriptValidateTypes
     return  this.http.get(`${this.URL}/random?api_key=${API_KEY}`)
-      .map(this.extractData).catch(this.handleError);
+        .map(this.extractSingleGif).catch(this.handleError);
 
   }
 
-  private extractData(res: Response) {
+  search(searchTerm :string): Observable<Gif[]>{
+    //noinspection TypeScriptValidateTypes
+    return  this.http.get(`${this.URL}/search?api_key=${API_KEY}&q=${searchTerm}&limit=${this.SEARCH_LIMIT}`)
+        .map(this.extractMutlipleGifs).catch(this.handleError);
+
+  }
+
+  private extractSingleGif(res: Response) {
     let body = res.json();
-    return new Gif(body.data.fixed_width_small_url);
+    return new Gif(body.data.fixed_height_small_url);
+  }
+
+
+  private extractMutlipleGifs(res: Response) {
+    let gifInfos:any[] = res.json().data;
+    let gifs:Gif[] = [];
+
+    for(let gifInfo of gifInfos){
+
+      gifs.push(new Gif(gifInfo.images.fixed_height_small.url));
+    }
+
+    return gifs;
   }
 
   private handleError (error: Response | any) {

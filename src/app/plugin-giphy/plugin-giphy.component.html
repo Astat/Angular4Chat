@@ -1,4 +1,8 @@
-<p>
-  {{texte}}
-  <img [src]="url">
-</p>
+
+  <div *ngIf="userMessage" class="alert alert-info">{{userMessage}}</div>
+
+
+  <div *ngFor="let gif of gifs" class="gif-wrapper">
+    <img [src]="gif.url" />
+  </div>
+
