@@ -21,8 +21,7 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
 import {GiphyService} from "./giphy.service";
 import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
 import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
-import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
-import {HttpModule} from "@angular/http";
+import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";;
 
 @NgModule({
   declarations: [
