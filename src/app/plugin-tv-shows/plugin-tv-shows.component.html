@@ -1,0 +1,10 @@
+<h3 style="color: red" *ngIf="error">Commande !</h3>
+
+<div [ngSwitch]="functionality">
+  <app-show-search *ngSwitchCase="Functionality.SHOW_SEARCH" [shows]="shows" [query]="query"></app-show-search>
+  <app-show-people *ngSwitchCase="Functionality.PEOPLE" [people]="people"></app-show-people>
+  <app-show-seasons *ngSwitchCase="Functionality.SEASONS" [seasons]="seasons"></app-show-seasons>
+  <app-show-actors *ngSwitchCase="Functionality.ACTORS" [people]="people"></app-show-actors>
+  <app-show-episodes *ngSwitchCase="Functionality.EPISODES" [episodes]="episodes"></app-show-episodes>
+  <app-show-help *ngSwitchCase="Functionality.HELP"></app-show-help>
+</div>

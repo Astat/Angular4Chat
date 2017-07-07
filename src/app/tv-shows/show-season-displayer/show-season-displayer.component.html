@@ -1,0 +1,18 @@
+<div class="season card">
+
+  <div class="left-container">
+    <app-image-displayer [src]="season.image?.medium" [alt]="season.name"></app-image-displayer>
+  </div>
+
+  <div class="right-container">
+    <span>Saison {{season.number}}</span>
+    <h3>{{season.name}}</h3>
+    <div [innerHTML]="season.summary"></div>
+
+    <button type="button" (click)="getEpisodes(season.id)">Voir les episodes</button>
+  </div>
+
+  <div class="clear-both"></div>
+
+
+</div>

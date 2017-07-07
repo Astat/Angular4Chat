@@ -1,0 +1,16 @@
+<div class="episode card">
+
+  <div class="left-container">
+    <app-image-displayer [src]="episode.image?.medium" [alt]="episode.name"></app-image-displayer>
+  </div>
+
+  <div class="right-container">
+    <span>Saison {{episode.season}}</span>
+    <span>Episode {{episode.number}}</span>
+    <div [innerHTML]="episode.summary"></div>
+  </div>
+
+  <div class="clear-both"></div>
+
+
+</div>
