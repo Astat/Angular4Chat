@@ -1,0 +1,37 @@
+h2 {
+  color: grey;
+  font-size: 1em;
+}
+p.loading {
+    color: #AAA;
+}
+
+div.info {
+  margin-top: 10px;
+}
+.time {
+  font-weight: bold;
+}
+.map {
+  color: dodgerblue;
+}
+
+.sun {
+  color: #ffff7b;
+}
+.sunrise {
+  color: orange;
+}
+.sunset {
+  color: #ff6c6c;
+}
+
+.share {
+  margin-top: 10px;
+}
+
+.share a {
+  color: grey;
+  text-decoration: none;
+}
+
