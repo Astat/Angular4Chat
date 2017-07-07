@@ -18,11 +18,13 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
+import {ChucknorrisService} from "./chucknorris.service";
+import {HttpModule} from "@angular/http";
 import {GiphyService} from "./giphy.service";
 import { PluginGiphyComponent } from './plugin-giphy/plugin-giphy.component';
 import { PluginFixerComponent } from './plugin-fixer/plugin-fixer.component';
 import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component";
-import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import {HttpModule} from "@angular/http";
     PluginTestComponent,
     MessageViewComponent,
     PluginPrivateComponent,
+    PluginChuckComponent
     PluginGiphyComponent,
     PluginSunriseComponent,
     PluginFixerComponent
@@ -42,12 +45,13 @@ import {HttpModule} from "@angular/http";
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    FormsModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [
     ChatHandlerService,
     ChatCommunicationService,
+    ChucknorrisService,
     ConnectedGuard,
     GiphyService
   ],
