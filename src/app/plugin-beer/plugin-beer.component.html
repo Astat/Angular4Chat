@@ -1,5 +1,15 @@
-<div class="beer">
-    <p class="name">{{beer?.name}}</p>
-    <p class="description">{{beer?.description}}</p>
-    <img [src]="beer?.image_url">
+
+<div class="beer" *ngIf="beers?.length == 1">
+    <p class="name">{{beers[0]?.name}}</p>
+    <p class="description">{{beers[0]?.description}}</p>
+    <img [src]="beers[0]?.image_url">
 </div>
+
+<div class="beer" *ngIf="beers?.length > 1">
+    <p>Beer search for : {{searchMotif}}</p>
+    <ul>
+        <li class="name" *ngFor="let beer of beers">{{beer?.name}}</li>
+    </ul>
+</div>
+
+

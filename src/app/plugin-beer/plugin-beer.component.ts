@@ -17,13 +17,23 @@ export class PluginBeerComponent extends PluginTemplateComponent {
   }
 
   private write: string;
-  beer: Beer;
+  beers: Beer[];
+  searchMotif: string;
 
   process(command: string, value: string, author: string) {
     if (command != "beer") {
       return;
     }
-    this.beerService.getRandomBeer().subscribe(beer=> this.beer=beer);
+
+    if(value){
+      this.searchMotif = value;
+      this.beerService.findBeers(value)
+      .subscribe(beers=> this.beers=beers);
+
+    } else {
+      this.beerService.getRandomBeer().subscribe(beer=> this.beers=[beer]);
+    }
+
     this.intercept();
   }
 
