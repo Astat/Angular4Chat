@@ -16,6 +16,11 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
+import {ChucknorrisService} from "./chucknorris.service";
+import {HttpModule} from "@angular/http";
+
+
 
 @NgModule({
   declarations: [
@@ -27,16 +32,19 @@ import { PluginPrivateComponent } from './plugin-private/plugin-private.componen
     MessageInterceptorComponent,
     PluginTestComponent,
     MessageViewComponent,
-    PluginPrivateComponent
+    PluginPrivateComponent,
+    PluginChuckComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
+    HttpModule,
     FormsModule
   ],
   providers: [
     ChatHandlerService,
     ChatCommunicationService,
+    ChucknorrisService,
     ConnectedGuard
   ],
   bootstrap: [AppComponent]

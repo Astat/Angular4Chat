@@ -5,6 +5,9 @@ import {ChatHandlerService} from '../chat-handler.service'
 import {ChatCommunicationService} from '../chat-communication.service'
 import {Router} from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import {ChucknorrisService} from "../chucknorris.service";
+import {Observable} from "rxjs/Observable";
+import {ChuckMessage} from "../chuck-message";
 
 
 @Component({
@@ -15,13 +18,14 @@ import { ActivatedRoute } from '@angular/router';
 export class ChatViewComponent implements OnInit {
 
   constructor(private chatCommunication: ChatCommunicationService,
+              private chuckNorrisService: ChucknorrisService,
               private chatService: ChatHandlerService,
               private cdRef: ChangeDetectorRef,
               private zone: NgZone,
               private router: Router,
               private route: ActivatedRoute) {
   }
-  
+
   private name: string = '';
   private sub: any;
 
@@ -61,8 +65,14 @@ export class ChatViewComponent implements OnInit {
        this.name = params['pseudo'];
     });
   }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  sendChuck() {
+    let obj: Observable<ChuckMessage> = this.chuckNorrisService.sendRandom();
+    obj.subscribe(m => {console.log(m)});
   }
 
   send() {
