@@ -18,6 +18,9 @@ import {MessageViewComponent} from "./message-view/message-view.component";
 import {PluginTestComponent} from "./plugin-test/plugin-test.component";
 import {MessageInterceptorComponent} from "./message-interceptor/message-interceptor.component";
 import { PluginPrivateComponent } from './plugin-private/plugin-private.component';
+import {PluginMathComponent} from "./plugin-math/plugin-math.component";
+import {MathService} from "./math.service";
+import { HttpModule } from '@angular/http';
 import { PluginBeerComponent } from './plugin-beer/plugin-beer.component';
 import { BeerService } from './plugin-beer/beer.service';
 import { PluginChuckComponent } from './plugin-chuck/plugin-chuck.component';
@@ -38,6 +41,7 @@ import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component"
     PluginTestComponent,
     MessageViewComponent,
     PluginPrivateComponent,
+    PluginMathComponent,
     PluginBeerComponent,
     PluginChuckComponent,
     PluginGiphyComponent,
@@ -54,6 +58,7 @@ import {PluginSunriseComponent} from "./plugin-sunrise/plugin-sunrise.component"
     ChatHandlerService,
     ChatCommunicationService,
     ConnectedGuard,
+    MathService,
     BeerService,
     ChucknorrisService,
     ConnectedGuard,
