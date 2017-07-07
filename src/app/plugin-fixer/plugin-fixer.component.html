@@ -1,1 +1,22 @@
-<p> {{write}}</p>
+
+<div *ngIf="!isUi" >
+
+<p> 
+  {{write}}
+</p>
+</div>
+
+<div *ngIf="isUi" >
+
+
+  
+  <input type="text" (keyup)="update()" (click)="update()" [(ngModel)]="uinput" placeholder="uinput">
+ {{base}} to 
+
+  <select [(ngModel)]="symbol" (click)="update()">
+    <option *ngFor="let x of symbols" [value]="x" >{{x}}</option>
+  </select>
+
+   = {{write}}
+ 
+</div>
